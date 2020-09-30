@@ -29,6 +29,11 @@ public class BookController {
         this.publisherService = publisherService;
     }
 
+    @RequestMapping(value = "/", method = RequestMethod.GET)
+    public String getBooks() {
+        return "redirect:/books";
+    }
+
     @RequestMapping(value = "/books", method = RequestMethod.GET)
     public String getBooks(Model model) {
         List<Book> books = bookService.getBooks();
