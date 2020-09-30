@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <title>New Author</title>
-
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-<form action="#" th:action="@{/authors}" th:object="${author}" method="post">
-    <input type="text" name="name" placeholder="Author name">
-    <input type="text" name="description" placeholder="Description">
-    <input type="text" name="gender" placeholder="Gender">
-    <input type="text" name="birthDate" placeholder="Birth year">
-    <input type="submit" value="Add">
-</form>
+    <div th:replace="fragments/header :: navbar"></div>
+    <div class="row justify-content-center m-5">
+        <div class="col-md-6">
+            <form action="#" th:action="@{/authors}" th:object="${author}" method="post">
+                <div class="input-group mb-3">
+                    <input type="text" name="name" placeholder="Author name" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="description" placeholder="Description" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="gender" placeholder="Gender" class="form-control">
+                </div>
+                <div class="input-group mb-3">
+                    <input type="text" name="birthDate" placeholder="Birth year" class="form-control">
+                </div>
+                <div class="input-group mb-3 row justify-content-center">
+                    <input type="submit" value="Add Author" class="btn btn-secondary">
+                </div>
+            </form>
+        </div>
+    </div>
 </body>
 </html>

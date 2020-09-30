@@ -3,12 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <title>Publisher Update</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
-    <form action="#" th:action="@{/publishers/update/} + ${updatePublisher.id}" th:object="${publisher}" method="post">
-        <input type="text" name="name" th:value="${updatePublisher.name}" placeholder="Publisher Name">
-        <input type="text" name="description" th:value="${updatePublisher.description}" placeholder="Description">
-        <input type="submit" value="Update">
-    </form>
+<div th:replace="fragments/header :: navbar"></div>
+<div class="row justify-content-center m-5">
+    <div class="col-md-6">
+        <form action="#" th:action="@{/publishers/update/} + ${updatePublisher.id}" th:object="${publisher}"
+              method="post">
+            <div class="input-group mb-3">
+                <input type="text" name="name" th:value="${updatePublisher.name}" placeholder="Publisher Name"
+                       class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="description" th:value="${updatePublisher.description}"
+                       placeholder="Description"
+                       class="form-control">
+            </div>
+            <div class="input-group mb-3 row justify-content-center">
+                <input type="submit" value="Update" class="btn btn-secondary">
+            </div>
+        </form>
+    </div>
+</div>
 </body>
 </html>

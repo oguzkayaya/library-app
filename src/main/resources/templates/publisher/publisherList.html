@@ -4,16 +4,42 @@
 <head>
     <meta charset="UTF-8">
     <title>Publishers</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
-<body style="text-align:center">
-<div th:each="publisher: ${publishers}">
-    <span th:text="${publisher.id}"></span>
-    <span th:text="${publisher.name}"></span>
-    <span th:text="${publisher.description}"></span>
-    <button th:onclick="|window.location.href='/publishers/delete/${publisher.id}'|">Delete</button>
-    <button th:onclick="|window.location.href='/publishers/update/${publisher.id}'|">Update</button>
+<body>
+<div th:replace="fragments/header :: navbar"></div>
+<div class="container">
+    <div class="row justify-content-center">
+        <input class="btn btn-secondary mb-3" type="button" value="New Publisher"
+               th:onclick="|window.location.href='/publishers/new'|">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Publisher Name</th>
+                <th scope="col">Description</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="publisher: ${publishers}">
+                <th scope="row" th:text="${publisher.id}"></th>
+                <td th:text="${publisher.name}"></td>
+                <td th:text="${publisher.description}"></td>
+                <td>
+                    <button class="btn btn-danger btn-sm"
+                            th:onclick="|window.location.href='/publishers/delete/${publisher.id}'|">Delete
+                    </button>
+                    <button class="btn btn-info btn-sm"
+                            th:onclick="|window.location.href='/publishers/update/${publisher.id}'|">
+                        Update
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
 </div>
-<br>
-<input type="button" value="New Publisher" th:onclick="|window.location.href='/publishers/new'|">
 </body>
 </html>
