@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Author Update</title>
+</head>
+<body>
+<form action="#" th:action="@{/authors/update/} + ${updateAuthor.id}" th:object="${author}" method="post">
+    <input type="text" name="name" th:value="${updateAuthor.name}" placeholder="Author name">
+    <input type="text" name="description" th:value="${updateAuthor.description}" placeholder="Description">
+    <input type="text" name="gender" th:value="${updateAuthor.gender}" placeholder="Gender">
+    <input type="text" name="birthDate" th:value="${updateAuthor.birthDate}" placeholder="Birth year">
+    <input type="submit" value="Update">
+</form>
+</body>
+</html>

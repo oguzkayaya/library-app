@@ -12,6 +12,10 @@
     <span th:text="${author.description}"></span>
     <span th:text="${author.gender}"></span>
     <span th:text="${author.birthDate}"></span>
+    <button th:onclick="|window.location.href='/authors/delete/${author.id}'|">Delete</button>
+    <button th:onclick="|window.location.href='/authors/update/${author.id}'|">Update</button>
 </div>
+<br>
+<input type="button" value="New Author" th:onclick="|window.location.href='/authors/new'|">
 </body>
 </html>
