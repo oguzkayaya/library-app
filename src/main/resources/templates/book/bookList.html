@@ -8,43 +8,42 @@
           integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
 </head>
 <body>
+<div th:replace="fragments/header :: navbar"></div>
 <div class="container">
-    <div class="m-3">
-        <form action="#" th:action="@{/books/search}" th:object="${searchmodel}" method="get">
-            <div class="input-group mb-3 ">
-                <input type="text"
-                       th:value="${searchValues != null} ? ${searchValues.title} : null"
-                       name="title"
-                       placeholder="Title"
-                       class="form-control mr-3">
-                <input type="text"
-                       th:value="${searchValues != null} ? ${searchValues.series} : null"
-                       name="series"
-                       placeholder="Series"
-                       class="form-control mr-3">
-                <input type="text"
-                       th:value="${searchValues != null} ? ${searchValues.isbn} : null"
-                       name="isbn"
-                       placeholder="Isbn"
-                       class="form-control mr-3">
-                <input type="text"
-                       th:value="${searchValues != null} ? ${searchValues.author} : null"
-                       name="author"
-                       placeholder="Author"
-                       class="form-control mr-3">
-                <input type="text"
-                       th:value="${searchValues != null} ? ${searchValues.publisher} : null"
-                       name="publisher"
-                       placeholder="Publisher"
-                       class="form-control">
-            </div>
-            <div class="input-group row justify-content-center">
-                <input type="submit" class="btn btn-primary mx-3" value="Search">
-                <input type="button" class="btn btn btn-warning" th:onclick="|window.location.href='/books'|"
-                       value="Reset"></input>
-            </div>
-        </form>
-    </div>
+    <form action="#" th:action="@{/books/search}" th:object="${searchmodel}" method="get">
+        <div class="input-group mb-3 ">
+            <input type="text"
+                   th:value="${searchValues != null} ? ${searchValues.title} : null"
+                   name="title"
+                   placeholder="Title"
+                   class="form-control mr-3">
+            <input type="text"
+                   th:value="${searchValues != null} ? ${searchValues.series} : null"
+                   name="series"
+                   placeholder="Series"
+                   class="form-control mr-3">
+            <input type="text"
+                   th:value="${searchValues != null} ? ${searchValues.isbn} : null"
+                   name="isbn"
+                   placeholder="Isbn"
+                   class="form-control mr-3">
+            <input type="text"
+                   th:value="${searchValues != null} ? ${searchValues.author} : null"
+                   name="author"
+                   placeholder="Author"
+                   class="form-control mr-3">
+            <input type="text"
+                   th:value="${searchValues != null} ? ${searchValues.publisher} : null"
+                   name="publisher"
+                   placeholder="Publisher"
+                   class="form-control">
+        </div>
+        <div class="input-group row justify-content-center">
+            <input type="submit" class="btn btn-primary mx-3" value="Search">
+            <input type="button" class="btn btn btn-warning" th:onclick="|window.location.href='/books'|"
+                   value="Reset"></input>
+        </div>
+    </form>
     <hr>
     <div class="row justify-content-center">
         <input class="btn btn-secondary mb-3" type="button" value="New Book"
