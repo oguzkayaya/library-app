@@ -51,6 +51,8 @@ public class BookService {
         BookSpecification titleSpec = null;
         BookSpecification seriesSpec = null;
         BookSpecification isbnSpec = null;
+        BookSpecification authorSpec = null;
+        BookSpecification publisherSpec = null;
         if (searchModel.getTitle() != null)
             titleSpec = new BookSpecification(
                     new SearchCriteria("title", searchModel.getTitle().toLowerCase()));
@@ -60,8 +62,20 @@ public class BookService {
         if (searchModel.getIsbn() != null)
             isbnSpec = new BookSpecification(
                     new SearchCriteria("isbn", searchModel.getIsbn().toLowerCase()));
+        if (searchModel.getAuthor() != null)
+            authorSpec = new BookSpecification(
+                    new SearchCriteria("author", searchModel.getAuthor().toLowerCase()));
+        if (searchModel.getPublisher() != null)
+            publisherSpec = new BookSpecification(
+                    new SearchCriteria("publisher", searchModel.getPublisher().toLowerCase()));
 
-        Specification spec = Specification.where(titleSpec).and(seriesSpec).and(isbnSpec);
+        Specification spec = Specification
+                .where(titleSpec)
+                .and(seriesSpec)
+                .and(isbnSpec)
+                .and(authorSpec)
+                .and(publisherSpec);
+
         List<Book> result = bookRepository.findAll(spec);
         return result;
     }
