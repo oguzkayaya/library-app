@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Publishers</title>
+</head>
+<body style="text-align:center">
+<div th:each="publisher: ${publishers}">
+    <span th:text="${publisher.id}"></span>
+    <span th:text="${publisher.name}"></span>
+    <span th:text="${publisher.description}"></span>
+    <button th:onclick="|window.location.href='/publishers/delete/${publisher.id}'|">Delete</button>
+    <button th:onclick="|window.location.href='/publishers/update/${publisher.id}'|">Update</button>
+</div>
+<br>
+<input type="button" value="New Publisher" th:onclick="|window.location.href='/publishers/new'|">
+</body>
+</html>

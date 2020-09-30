@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Publisher Update</title>
+</head>
+<body>
+    <form action="#" th:action="@{/publishers/update/} + ${updatePublisher.id}" th:object="${publisher}" method="post">
+        <input type="text" name="name" th:value="${updatePublisher.name}" placeholder="Publisher Name">
+        <input type="text" name="description" th:value="${updatePublisher.description}" placeholder="Description">
+        <input type="submit" value="Update">
+    </form>
+</body>
+</html>
