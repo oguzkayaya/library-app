@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Book Update</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+    <div class="row justify-content-center m-5">
+    <div class="col-md-6">
+        <form action="#" th:action="@{/books/update/} + ${updateBook.id}" th:object="${book}" method="post">
+            <div class="input-group mb-3">
+                <input type="text" name="title" th:value="${updateBook.title}" placeholder="Book title"
+                       class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="description" th:value="${updateBook.description}" placeholder="Description"
+                       class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="series" th:value="${updateBook.series}" placeholder="Series"
+                       class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="isbn" th:value="${updateBook.isbn}" placeholder="Isbn" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <select id="author" name="author" class="custom-select">
+                    <option th:each="author: ${authors}" th:value="${author.id}" th:text="${author.name}"
+                            th:selected="${author.id == updateBook.author.id}"></option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <select id="publisher" name="publisher" class="custom-select">
+                    <option th:each="publisher: ${publishers}" th:value="${publisher.id}"
+                            th:text="${publisher.name}"
+                            th:selected="${publisher.id == updateBook.publisher.id}"></option>
+                </select>
+            </div>
+            <div class="input-group mb-3 row justify-content-center">
+                <input type="submit" value="Update" class="btn btn-secondary">
+            </div>
+        </form>
+    </div>
+</body>
+</html>

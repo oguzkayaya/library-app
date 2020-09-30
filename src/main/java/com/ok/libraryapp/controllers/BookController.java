@@ -8,6 +8,7 @@ import com.ok.libraryapp.services.BookService;
 import com.ok.libraryapp.services.PublisherService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -47,4 +48,28 @@ public class BookController {
         bookService.saveBook(book);
         return "redirect:/books";
     }
+
+    @RequestMapping(value = "/books/delete/{id}", method = RequestMethod.GET)
+    public String deleteBook(@PathVariable int id) {
+        bookService.deleteBook(id);
+        return "redirect:/books";
+    }
+
+    @RequestMapping(value = "/books/update/{id}", method = RequestMethod.GET)
+    public String showUpdateForm(@PathVariable int id, Model model) {
+        Book updateBook = bookService.getBook(id);
+        model.addAttribute("updateBook", updateBook);
+        List<Author> authors = authorService.getAuthors();
+        List<Publisher> publishers = publisherService.getPublishers();
+        model.addAttribute("authors", authors);
+        model.addAttribute("publishers", publishers);
+        return "/book/bookUpdateForm";
+    }
+
+    @RequestMapping(value = "/books/update/{id}", method = RequestMethod.POST)
+    public String updateAuthor(@PathVariable int id, Book newBook) {
+        bookService.updateBook(newBook, id);
+        return "redirect:/books";
+    }
+
 }

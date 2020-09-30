@@ -34,6 +34,14 @@
                 <td th:text="${book.isbn}"></td>
                 <td th:text="${book.author.name}"></td>
                 <td th:text="${book.publisher.name}"></td>
+                <td>
+                    <button class="btn btn-danger btn-sm"
+                            th:onclick="|window.location.href='/books/delete/${book.id}'|">Delete
+                    </button>
+                    <button class="btn btn-info btn-sm" th:onclick="|window.location.href='/books/update/${book.id}'|">
+                        Update
+                    </button>
+                </td>
             </tr>
             </tbody>
         </table>
