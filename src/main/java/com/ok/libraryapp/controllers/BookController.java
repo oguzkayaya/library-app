@@ -1,8 +1,10 @@
 package com.ok.libraryapp.controllers;
 
+import com.ok.libraryapp.db.BookSpecification;
 import com.ok.libraryapp.models.Author;
 import com.ok.libraryapp.models.Book;
 import com.ok.libraryapp.models.Publisher;
+import com.ok.libraryapp.models.SearchModel;
 import com.ok.libraryapp.services.AuthorService;
 import com.ok.libraryapp.services.BookService;
 import com.ok.libraryapp.services.PublisherService;
@@ -67,9 +69,17 @@ public class BookController {
     }
 
     @RequestMapping(value = "/books/update/{id}", method = RequestMethod.POST)
-    public String updateAuthor(@PathVariable int id, Book newBook) {
+    public String updateBook(@PathVariable int id, Book newBook) {
         bookService.updateBook(newBook, id);
         return "redirect:/books";
+    }
+
+    @RequestMapping(value = "/books/search", method = RequestMethod.GET)
+    public String searchBooks(Model model, SearchModel searchModel) {
+        List<Book> results = bookService.searchBooks(searchModel);
+        model.addAttribute("books", results);
+        model.addAttribute("searchValues", searchModel);
+        return "/book/bookList";
     }
 
 }
