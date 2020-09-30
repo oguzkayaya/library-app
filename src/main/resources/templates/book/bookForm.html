@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Add Book</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+</head>
+<body>
+<div class="row justify-content-center m-5">
+    <div class="col-md-6">
+        <form action="#" th:action="@{/books}" th:object="${book}" method="post">
+            <div class="input-group mb-3">
+                <input type="text" name="title" placeholder="Book title" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="description" placeholder="Description" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="series" placeholder="Series" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <input type="text" name="isbn" placeholder="Isbn" class="form-control">
+            </div>
+            <div class="input-group mb-3">
+                <select th:field="*{author}" class="custom-select">
+                    <option th:each="author: ${authors}" th:value="${author.id}" th:text="${author.name}"></option>
+                </select>
+            </div>
+            <div class="input-group mb-3">
+                <select th:field="*{publisher}" class="custom-select">
+                    <option th:each="publisher: ${publishers}" th:value="${publisher.id}" th:text="${publisher.name}"></option>
+                </select>
+            </div>
+            <div class="input-group mb-3 row justify-content-center">
+                <input type="submit" value="Add Book" class="btn btn-secondary">
+            </div>
+        </form>
+    </div>
+</div>
+</body>
+</html>
