@@ -14,7 +14,9 @@ This is a library application. H2 embedded database is used as database in the a
 Maven must be installed on your computer to run the application from the command line.
 
 > \>git clone https://github.com/oguzkayaya/library-app 
+>
 > \>cd library-app 
+>
 > \>mvn spring-boot:run
 
 
