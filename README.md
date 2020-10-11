@@ -30,12 +30,12 @@ You will need to login. There are users in 2 different roles that you can login
 
 User whose role is **ADMIN** can do all operations, Create, Delete, Update
 
-> Username: Admin	
+> Username: admin	
 >
-> Password: Admin123
+> Password: admin123
 
-Standard users whose role is USER cannot delete and update, they can only add.
+Standard users whose role is **USER** cannot delete and update, they can only add.
 
-> Username: User
+> Username: user
 >
-> Password: User123
+> Password: user123
